@@ -17,7 +17,7 @@ from model.dcpf_ZTP import dcpf_ZTP
 from model.dcpf_Geo import dcpf_Geo
 from model.dcpf_sNB import dcpf_sNB
 
-from function import rec_eval,scores
+from function import rec_eval
 
 #%%
 folder_name = 'tps' 
@@ -58,6 +58,7 @@ for filename in glob.glob(os.path.join(path,'*')):
     print "+1"
 
 #%% Read scores
+appended_data = []
 for filename in glob.glob(os.path.join(path,'*')):  
     with open(filename,'rb') as f:
         model = pickle.load(f)
@@ -68,4 +69,5 @@ for filename in glob.glob(os.path.join(path,'*')):
     df_loc = pd.concat([df_name,df_init,df_fit,df_score], axis=1)
     appended_data.append(df_loc)
     
-df = pd.concat(appended_data, axis=0)
+if appended_data!=[]:
+    df = pd.concat(appended_data, axis=0)
