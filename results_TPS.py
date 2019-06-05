@@ -35,7 +35,6 @@ Y_train,Y_test = divide_train_test(Y,prop_test=prop_test,seed=seed_test)
 
 #%% Calculate scores
 for filename in glob.glob(os.path.join(path,'*')):  
-    print filename
     with open(filename,'rb') as f:
         model = pickle.load(f)
         W = model.Ew
@@ -55,7 +54,6 @@ for filename in glob.glob(os.path.join(path,'*')):
             model.score['recall_at_'+str(k)]=recall
     model.save_dir = path
     model.save_model()
-    print "+1"
 
 #%% Read scores
 appended_data = []
