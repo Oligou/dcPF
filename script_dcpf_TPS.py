@@ -37,13 +37,16 @@ alphas = [.3] # shape parameter of the gamma priors of W and H
 # Note that limit cases: PF on raw data and PF on binarized data are obtained, 
 # for example, when p=0 or p=1 for dcpf with Log 
 
+tol=0
+min_iter = max_iter = 10**3
+
 save_dir = 'out/tps'
 
 ####################
 #%% dcPF: Log
 ####################
 
-if False:
+if True:
     opt_hyper = ['beta']  
     for seed in Seed:
         for p in np.linspace(0,1.,11): # Grid-search
@@ -51,11 +54,12 @@ if False:
                 for alpha in alphas:
                     model = dcpf_Log(K=K, p=p, alphaW=alpha,alphaH=alpha)
                     model.fit(Y_train, opt_hyper=opt_hyper, seed=seed,
+                              precision=tol, min_iter=min_iter, max_iter=max_iter,
                              save=True, save_dir=save_dir,prefix='tps', 
                              verbose=False)
                     print '+1'
 
-if False:
+if True:
     opt_hyper = ['p','beta']  
     p = 0.5
     for seed in Seed:
@@ -63,6 +67,7 @@ if False:
             for alpha in alphas:
                 model = dcpf_Log(K=K, p=p, alphaW=alpha,alphaH=alpha)
                 model.fit(Y_train, opt_hyper=opt_hyper, seed=seed,
+                          precision=tol, min_iter=min_iter, max_iter=max_iter,
                          save=True, save_dir=save_dir,prefix='tps', 
                          verbose=True)
                 print '+1'
@@ -71,7 +76,7 @@ if False:
 #%% dcPF: ZTP
 ####################
 
-if False:
+if True:
     opt_hyper = ['beta']  
     for seed in Seed:
         for p in [0.,.1,.5,1.,2.,5.,10.,float('inf')]: # Grid-search
@@ -79,11 +84,12 @@ if False:
                 for alpha in alphas:
                     model = dcpf_ZTP(K=K, p=p, alphaW=alpha,alphaH=alpha)
                     model.fit(Y_train, opt_hyper=opt_hyper, seed=seed,
+                              precision=tol, min_iter=min_iter, max_iter=max_iter,
                              save=True, save_dir=save_dir,prefix='tps', 
                              verbose=False)
                     print '+1'
    
-if False:
+if True:
     opt_hyper = ['p','beta']  
     p = 1.
     for seed in Seed:
@@ -91,6 +97,7 @@ if False:
             for alpha in alphas:
                 model = dcpf_ZTP(K=K, p=p, alphaW=alpha,alphaH=alpha)
                 model.fit(Y_train, opt_hyper=opt_hyper, seed=seed,
+                          precision=tol, min_iter=min_iter, max_iter=max_iter,
                          save=True, save_dir=save_dir,prefix='tps', 
                          verbose=False)
                 print '+1'
@@ -99,7 +106,7 @@ if False:
 #%% dcPF: Geo
 ####################
 
-if False:
+if True:
     opt_hyper = ['beta']  
     for seed in Seed:
         for p in np.linspace(0,1.,11): # Grid-search
@@ -107,11 +114,12 @@ if False:
                 for alpha in alphas:
                     model = dcpf_Geo(K=K, p=p, alphaW=alpha,alphaH=alpha)
                     model.fit(Y_train, opt_hyper=opt_hyper, seed=seed,
+                              precision=tol, min_iter=min_iter, max_iter=max_iter,
                              save=True, save_dir=save_dir,prefix='tps', 
                              verbose=False)
                     print '+1'
                
-if False:
+if True:
     opt_hyper = ['p','beta']  
     p = .5
     for seed in Seed:
@@ -119,6 +127,7 @@ if False:
             for alpha in alphas:
                 model = dcpf_Geo(K=K, p=p, alphaW=alpha,alphaH=alpha)
                 model.fit(Y_train, opt_hyper=opt_hyper, seed=seed,
+                          precision=tol, min_iter=min_iter, max_iter=max_iter,
                          save=True, save_dir=save_dir,prefix='tps', 
                          verbose=False)
                 print '+1'
@@ -127,7 +136,7 @@ if False:
 #%% dcPF: Geo
 ####################
 
-if False:
+if True:
     opt_hyper = ['beta']  
     for seed in Seed:
         for p in np.linspace(0,1.,11): # Grid-search
@@ -135,11 +144,12 @@ if False:
                 for alpha in alphas:
                     model = dcpf_sNB(K=K, p=p, alphaW=alpha,alphaH=alpha)
                     model.fit(Y_train, opt_hyper=opt_hyper, seed=seed,
+                              precision=tol, min_iter=min_iter, max_iter=max_iter,
                              save=True, save_dir=save_dir,prefix='tps', 
                              verbose=False)
                     print '+1'
                
-if False:
+if True:
     opt_hyper = ['p','beta']  
     p = .5
     for seed in Seed:
@@ -147,6 +157,7 @@ if False:
             for alpha in alphas:
                 model = dcpf_sNB(K=K, p=p, alphaW=alpha,alphaH=alpha)
                 model.fit(Y_train, opt_hyper=opt_hyper, seed=seed,
+                          precision=tol, min_iter=min_iter, max_iter=max_iter,
                          save=True, save_dir=save_dir,prefix='tps', 
                          verbose=False)
                 print '+1'

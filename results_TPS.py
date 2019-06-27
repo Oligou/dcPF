@@ -35,6 +35,7 @@ Y_train,Y_test = divide_train_test(Y,prop_test=prop_test,seed=seed_test)
 
 #%% Calculate scores
 for filename in glob.glob(os.path.join(path,'*')):  
+    print filename
     with open(filename,'rb') as f:
         model = pickle.load(f)
         W = model.Ew
@@ -57,7 +58,7 @@ for filename in glob.glob(os.path.join(path,'*')):
 
 #%% Read scores
 appended_data = []
-for filename in glob.glob(os.path.join(path,'*')):  
+for filename in glob.glob(os.path.join(path,'*')):
     with open(filename,'rb') as f:
         model = pickle.load(f)
     df_name = pd.DataFrame.from_dict([{'filename':filename, 'classname':model.classname}])
@@ -65,7 +66,20 @@ for filename in glob.glob(os.path.join(path,'*')):
     df_fit = pd.DataFrame.from_dict([model.saved_args_fit])
     df_score = pd.DataFrame.from_dict([model.score])
     df_loc = pd.concat([df_name,df_init,df_fit,df_score], axis=1)
+    df_loc['p'] = model.p
+    df_loc['opt_hyper'] = '_'.join(sorted(model.opt_hyper))
     appended_data.append(df_loc)
     
 if appended_data!=[]:
     df = pd.concat(appended_data, axis=0)
+    
+df_grid = df[df['opt_hyper']=='beta']
+df_learn = df[df['opt_hyper']=='beta_p']
+
+#%%
+res_grid = df_grid.groupby(['classname','p']).agg(['mean']).reset_index()
+res_grid.columns = ["_".join(x) for x in res_grid.columns.ravel()]
+
+res_model = df_learn.groupby(['classname']).agg(['mean']).reset_index()
+res_model.columns = ["_".join(x) for x in res_model.columns.ravel()]
+
