@@ -1,7 +1,7 @@
 Code for the article: 
 O. Gouvert, T. Oberlin, C. Févotte "Recommendation from Raw Data with Adaptive Compound Poisson Factorization"
 
-The code is implemented in Python 2.7.
+It is implemented in Python 2.7.
 
 The repository contains:
 
@@ -13,4 +13,4 @@ The repository contains:
 
 - demo_dcpf.py is a small example of application of dcPF on synthetic data. 
 
-- In "function", you can recover a code borrowed from Dawen Liang, to calculate the scores. 
+- In "function": Some functions to calculate scores, borrowed from Dawen Liang. 
