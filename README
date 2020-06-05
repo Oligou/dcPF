@@ -5,13 +5,13 @@ Implemented in Python 2.7.
 
 The repository contains:
 
-- Models: the algorithms for the models described in the article, namely discrete compound Poisson factorization (dcPF), for different choices of element distributions: 
+- model: the algorithms for the models described in the article, namely discrete compound Poisson factorization (dcPF), for different choices of element distributions: 
     * logarithmic (dcpf_Log)
     * zero-truncated Poisson (dcpf_ZTP)
     * shifted geometric (dcpf_Geo) 
     * shifted negative binomial (dcpf_sNB)
 
-- Dataset: the subset of the Taste Profile dataset used in the article
+- dataset: the subset of the Taste Profile dataset used in the article
 
 - script_dcpf_TPS.py is the script used for the experiments of the article
 
