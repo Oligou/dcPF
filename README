@@ -1,16 +1,20 @@
 Code for the article: 
 O. Gouvert, T. Oberlin, C. Févotte "Recommendation from Raw Data with Adaptive Compound Poisson Factorization"
 
-It is implemented in Python 2.7.
+Implemented in Python 2.7.
 
 The repository contains:
 
-- Models: the algorithms for the models described in the article, namely discrete compound Poisson factorization (dcPF), for different choices of element distributions: logarithmic (dcpf_Log), zero-truncated Poisson (dcpf_ZTP), shifted geometric (dcpf_Geo), shifted negative binomial (dcpf_sNB).
+- Models: the algorithms for the models described in the article, namely discrete compound Poisson factorization (dcPF), for different choices of element distributions: 
+    * logarithmic (dcpf_Log)
+    * zero-truncated Poisson (dcpf_ZTP)
+    * shifted geometric (dcpf_Geo) 
+    * shifted negative binomial (dcpf_sNB)
 
-- Dataset: the subset of the Taste Profile dataset used in the article.
+- Dataset: the subset of the Taste Profile dataset used in the article
 
-- script_dcpf_TPS.py is the script used for the experiments of the article.
+- script_dcpf_TPS.py is the script used for the experiments of the article
 
-- demo_dcpf.py is a small example of application of dcPF on synthetic data. 
+- demo_dcpf.py is a small example of application of dcPF on synthetic data
 
-- In "function": Some functions to calculate scores, borrowed from Dawen Liang. 
+- In "function": some functions to calculate scores, borrowed from Dawen Liang
